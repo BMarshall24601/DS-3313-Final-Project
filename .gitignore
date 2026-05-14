@@ -5,12 +5,12 @@ __pycache__/
 venv/
 env/
 
-# Data files that are
+# Data files (too large for GitHub)
 data/raw/*.csv
 data/test/*.csv
 data/curated/*.csv
 
-# Generated reports that are recreated by the pipeline
+# Generated reports (recreated by pipeline)
 reports/*.json
 reports/*.csv
 reports/*.log
