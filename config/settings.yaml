@@ -1,0 +1,162 @@
+# ============================================================
+# settings.yaml — Central configuration for the curation pipeline
+# Can change values here to adapt the pipeline to a new dataset.
+# Do not edit the Python source files for dataset-specific changes.
+# ============================================================
+
+datasets:
+ 
+  dataset_a:
+    name: "NYC 311 Service Requests 2026"
+    input_file: "data/raw/nyc311_2026.csv"
+    output_file: "data/curated/nyc311_2026_curated.csv"
+    report_file: "reports/report_nyc311_2026.json"
+    columns:
+      unique_id: "Unique Key"
+      created_date: "Created Date"
+      closed_date: "Closed Date"
+      agency: "Agency"
+      complaint_type: "Complaint Type"
+      borough: "Borough"
+      status: "Status"
+      zip_code: "Incident Zip"
+    validation:
+      required_fields:
+        - "Unique Key"
+        - "Created Date"
+        - "Complaint Type"
+        - "Borough"
+      unique_id_column: "Unique Key"
+      valid_categories:
+        - column: "Borough"
+          values:
+            - "BRONX"
+            - "BROOKLYN"
+            - "MANHATTAN"
+            - "QUEENS"
+            - "STATEN ISLAND"
+            - "Unspecified"
+        - column: "Status"
+          values:
+            - "Open"
+            - "Closed"
+            - "Pending"
+            - "In Progress"
+            - "Started"
+            - "Assigned"
+      regex_checks:
+        - column: "Incident Zip"
+          pattern: '^\d{5}$'
+      range_checks: []
+      date_format: "%m/%d/%Y %I:%M:%S %p"
+    cleaning:
+      missing_value_strategy:
+        Borough: "flag"
+        Incident Zip: "flag"
+        Closed Date: "leave"
+        Agency: "flag"
+      normalize_uppercase:
+        - "Borough"
+        - "Agency"
+      on_duplicate: "keep_first"
+      date_columns:
+        - "Created Date"
+        - "Closed Date"
+ 
+  dataset_b:
+    name: "Chicago 311 Service Requests"
+    input_file: "data/raw/chicago311_2026.csv"
+    output_file: "data/curated/chicago311_curated.csv"
+    report_file: "reports/report_chicago311.json"
+    columns:
+      unique_id: "SR_NUMBER"
+      created_date: "CREATED_DATE"
+      closed_date: "CLOSED_DATE"
+      status: "STATUS"
+      zip_code: "ZIP_CODE"
+    validation:
+      required_fields:
+        - "SR_NUMBER"
+        - "CREATED_DATE"
+        - "SR_TYPE"
+      unique_id_column: "SR_NUMBER"
+      valid_categories:
+        - column: "STATUS"
+          values:
+            - "Completed"
+            - "Open"
+            - "Open - Dup"
+            - "Completed - Dup"
+      regex_checks:
+        - column: "ZIP_CODE"
+          pattern: '^\d{5}$'
+      range_checks: []
+      date_format: "%m/%d/%Y %I:%M:%S %p"
+    cleaning:
+      missing_value_strategy:
+        ZIP_CODE: "flag"
+        CLOSED_DATE: "leave"
+      normalize_uppercase: []
+      on_duplicate: "keep_first"
+      date_columns:
+        - "CREATED_DATE"
+        - "CLOSED_DATE"
+ 
+  dataset_c:
+    name: "Big Five Personality Test"
+    input_file: "data/raw/big5.csv"
+    output_file: "data/curated/big5_curated.csv"
+    report_file: "reports/report_big5.json"
+    columns:
+      timestamp: "dateload"
+      country: "country"
+      ip_count: "IPC"
+    validation:
+      required_fields:
+        - "dateload"
+        - "country"
+      unique_id_column: ""
+      valid_categories: []
+      regex_checks: []
+      range_checks:
+        - column: "EXT1"
+          min: 1
+          max: 5
+        - column: "AGR1"
+          min: 1
+          max: 5
+        - column: "CSN1"
+          min: 1
+          max: 5
+        - column: "EST1"
+          min: 1
+          max: 5
+        - column: "OPN1"
+          min: 1
+          max: 5
+      date_format: "%Y-%m-%d %H:%M:%S"
+    cleaning:
+      missing_value_strategy:
+        country: "flag"
+        IPC: "flag"
+        dateload: "flag"
+      normalize_uppercase:
+        - "country"
+      on_duplicate: "keep_first"
+      date_columns:
+        - "dateload"
+
+# ============================================================
+# HOW TO ADD A NEW DATASET
+# ============================================================
+# 1. Add an entry with input/output/report paths
+# 2. Update `columns:` to match the new CSV's column headers
+# 3. Update `validation.required_fields` with the new required columns
+# 4. Update `validation.unique_id_column` if the ID column has a different name
+# 5. Update `validation.valid_categories` with the new domain's categories
+# 6. Update `validation.regex_checks` with any format rules that apply
+# 7. Add `validation.range_checks` if the dataset has numeric columns to validate
+# 8. Update `cleaning` settings to match the new column names
+# 9. Run: python -m src.main <your_new_dataset_key>
+
+# Time was limited, but this could be customized!
