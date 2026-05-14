@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.env
+venv/
+env/
+
+# Data files that are
+data/raw/*.csv
+data/test/*.csv
+data/curated/*.csv
+
+# Generated reports that are recreated by the pipeline
+reports/*.json
+reports/*.csv
+reports/*.log
+
+# Mac system files
+.DS_Store
+
+# VS Code settings
+.vscode/
