@@ -7,7 +7,6 @@ env/
 
 # Data files (too large for GitHub)
 data/raw/*.csv
-data/test/*.csv
 data/curated/*.csv
 
 # Generated reports (recreated by pipeline)
