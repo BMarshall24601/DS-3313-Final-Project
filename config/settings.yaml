@@ -9,7 +9,7 @@ datasets:
  
   dataset_a:
     name: "NYC 311 Service Requests 2026"
-    input_file: "data/raw/nyc311_2026.csv"
+    input_file: "data/test/nyc_small.csv"
     output_file: "data/curated/nyc311_2026_curated.csv"
     report_file: "reports/report_nyc311_2026.json"
     columns:
@@ -66,7 +66,7 @@ datasets:
  
   dataset_b:
     name: "Chicago 311 Service Requests"
-    input_file: "data/raw/chicago311_2026.csv"
+    input_file: "data/test/chicago_small.csv"
     output_file: "data/curated/chicago311_curated.csv"
     report_file: "reports/report_chicago311.json"
     columns:
@@ -105,7 +105,7 @@ datasets:
  
   dataset_c:
     name: "Big Five Personality Test"
-    input_file: "data/raw/big5.csv"
+    input_file: "data/test/big_5_small.csv"
     output_file: "data/curated/big5_curated.csv"
     report_file: "reports/report_big5.json"
     columns:

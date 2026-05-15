@@ -43,3 +43,11 @@ Cannot handle Excel files
 If the source format changes, update settings.yaml
 Flags uncertainties for human review
 May not handle very large datasets 
+
+Data is sourced from
+- https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9/about_data
+- https://data.cityofchicago.org/Service-Requests/311-Service-Requests/v6vf-nfxy/about_data
+- https://www.kaggle.com/datasets/lucasgreenwell/big5personalitydataset
+
+Originally, the analyses were performed with data from January 1st to March 31st for the first two datasets and with full data for the final dataset.
+It yielded more interesting results than the small datasets.
