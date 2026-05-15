@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ** Project Purpose
 
 This project creates a reusable pipeline that ingests raw CSV data, cleans and standardizes it, and produces curated outputs in the form of CSV files. This extends manual curation into a reusable and automated system.
@@ -43,3 +44,7 @@ Cannot handle Excel files
 If the source format changes, update settings.yaml
 Flags uncertainties for human review
 May not handle very large datasets 
+=======
+# CS-3313 Final Project
+Automated Data Curation Pipeline
+>>>>>>> d8add55738d0ba8562657206c10ba03821f19867
