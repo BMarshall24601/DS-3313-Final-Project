@@ -1,6 +1,7 @@
 # ============================================================
 # settings.yaml — Central configuration for the curation pipeline
 # Can change values here to adapt the pipeline to a new dataset.
+# Can change input file to test files for a quicker run (fewer issues will be detected)
 # Do not edit the Python source files for dataset-specific changes.
 # ============================================================
 
@@ -159,4 +160,3 @@ datasets:
 # 8. Update `cleaning` settings to match the new column names
 # 9. Run: python -m src.main <your_new_dataset_key>
 
-# Time was limited, but this could be customized!
